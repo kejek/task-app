@@ -1,0 +1,1 @@
+const e={pending:"bg-amber-500",in_progress:"bg-blue-500",completed:"bg-green-500"},g={pending:"Pending",in_progress:"In Progress",completed:"Completed"},T={low:"bg-gray-600",medium:"bg-amber-600",high:"bg-red-600"},n={low:"Low",medium:"Medium",high:"High"};export{e as T,g as a,T as b,n as c};

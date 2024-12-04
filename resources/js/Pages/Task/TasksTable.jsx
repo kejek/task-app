@@ -9,6 +9,7 @@ export default function TasksTable({
   tasks,
   success,
   queryParams = null,
+  redirectRoute = 'task.index',
 }) {
   queryParams = queryParams || {};
   const searchFieldChanged = (name, value) => {
@@ -17,8 +18,7 @@ export default function TasksTable({
     } else {
       delete queryParams[name];
     }
-
-    router.get(route("task.index"), queryParams);
+    router.get(route(redirectRoute), queryParams);
   };
 
   const onKeyPress = (name, e) => {
@@ -38,7 +38,7 @@ export default function TasksTable({
       queryParams.sort_field = name;
       queryParams.sort_direction = "asc";
     }
-    router.get(route("task.index"), queryParams);
+    router.get(route(redirectRoute), queryParams);
   };
 
   const deleteTask = (task) => {
@@ -104,7 +104,14 @@ export default function TasksTable({
               >
                 Due Date
               </TableHeading>
-              <th className="px-3 py-3">Created By</th>
+              <TableHeading
+                name="created_by"
+                sort_field={queryParams.sort_field}
+                sort_direction={queryParams.sort_direction}
+                sortChanged={sortChanged}
+              >
+                Created By
+              </TableHeading>
               <th className="px-3 py-3 text-right">Actions</th>
             </tr>
           </thead>
